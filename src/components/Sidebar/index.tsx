@@ -103,7 +103,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           <div>
             <Link
             href={"/availability"}
-              className="flex items-center justify-center bg-primary text-white w-full rounded-[40px] px-[11px] py-[17px] my-[10px] text-center"
+              className="flex items-center justify-center bg-primary text-white-100 w-full rounded-[40px] px-[11px] py-[17px] my-[10px] text-center"
             >
               <Image
                 width={16}

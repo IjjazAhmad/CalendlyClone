@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { arrowDown } from "../../../public/images";
+import LogoutBtn from "../button/LogoutBtn";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -47,8 +48,9 @@ const DropdownUser = () => {
           <Image
             width={33}
             height={33}
-            src={"/images/user/user-01.png"}
+            src={"/images/user/user.jpg"}
             alt="User"
+            className="rounded-full"
           />
         </span>
 
@@ -85,9 +87,7 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center  px-8 py-2 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
-          Log Out
-        </button>
+        <LogoutBtn/>
       </div>
       {/* <!-- Dropdown End --> */}
     </div>

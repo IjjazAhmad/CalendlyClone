@@ -20,6 +20,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#0069FF",
+        primaryII: "rgba(0, 105, 255, 0.5)",
         white: {
           default: "#FFFFFF",
           100: "#FAFAFA",

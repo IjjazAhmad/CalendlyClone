@@ -15,7 +15,7 @@ export default function SignupForm() {
     const handelChange = (e: any) => {
         setstate(s => ({ ...s, [e.target.name]: e.target.value }))
     }
-    const handelSubmit = (e: any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log("🚀 ~ SignupForm ~ state:", state)
         setstate(initialState)
@@ -23,7 +23,7 @@ export default function SignupForm() {
 
 
     return (
-        <form className='px-[33px] py-[33px] border border-borderClr-1 shadow-2 rounded-md w-[95%] sm:w-[440px] ' onSubmit={handelSubmit}>
+        <form className='px-[33px] py-[33px] border border-borderClr-1 shadow-2 rounded-md w-[95%] sm:w-[440px] ' onSubmit={handleSubmit}>
             <div className='mb-[12px]'>
                 <label htmlFor="email" className='text-black font-bold text-sm'>Enter your email to get started</label>
                 <input type="email" name='email' value={state.email} className='px-[15px] py-[14px] mt-[8px] w-full border border-borderClr-2 rounded-lg text-black font-normal text-[16px]' style={{ outline: "none" }} onChange={(e) => handelChange(e)} placeholder='test@gmail.com' />
