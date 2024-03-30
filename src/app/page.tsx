@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { prisma } from "@/config/prisma";
 // import dbConnect from "@/config/db";
 // import userModel from "@/model/user";
 export const metadata: Metadata = {
@@ -9,21 +10,22 @@ export const metadata: Metadata = {
     "Next.js E-commerce Dashboard | TailAdmin - Next.js Dashboard Template",
   description: "This is Next.js Home for TailAdmin Dashboard Template",
 };
-// async function fetchUser() {
-//   try {
-//     await dbConnect(); // Ensure database connection
-//     const data = await userModel.find();
-//     return data;
-//   } catch (error) {
-//     console.log("Error fetching user data:", error);
-//     throw error;
-//   }
-// }
+async function fetchUser() {
+  try {
+    // await dbConnect(); // Ensure database connection
+    // const data = await userModel.find();
+    const allUsers = await prisma.profile.findMany()
+    return allUsers;
+  } catch (error) {
+    console.log("Error fetching user data:", error);
+    throw error;
+  }
+}
 export default async function Home() {
   const user = await getServerSession()
   console.log("🚀 ~ Home ~ user:", user)
   if (!user) {
-    redirect("/api/auth/signin")
+    redirect("/auth/signin")
   }
   // try {
   //   const data = await fetchUser();

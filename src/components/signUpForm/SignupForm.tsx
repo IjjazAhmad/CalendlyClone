@@ -1,4 +1,6 @@
 "use client"
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const initialState = {
@@ -10,7 +12,7 @@ const initialState = {
 
 export default function SignupForm() {
     const [state, setstate] = useState(initialState)
-
+    const router = useRouter()
 
     const handelChange = (e: any) => {
         setstate(s => ({ ...s, [e.target.name]: e.target.value }))
@@ -19,11 +21,11 @@ export default function SignupForm() {
         e.preventDefault();
         console.log("🚀 ~ SignupForm ~ state:", state)
         setstate(initialState)
+        router.push("/auth/signin")
     }
 
-
     return (
-        <form className='px-[33px] py-[33px] border border-borderClr-1 shadow-2 rounded-md w-[95%] sm:w-[440px] ' onSubmit={handleSubmit}>
+        <form className='px-[33px] mb-[33px] py-[33px] border border-borderClr-1 shadow-2 rounded-md w-[95%] sm:w-[440px] ' onSubmit={handleSubmit}>
             <div className='mb-[12px]'>
                 <label htmlFor="email" className='text-black font-bold text-sm'>Enter your email to get started</label>
                 <input type="email" name='email' value={state.email} className='px-[15px] py-[14px] mt-[8px] w-full border border-borderClr-2 rounded-lg text-black font-normal text-[16px]' style={{ outline: "none" }} onChange={(e) => handelChange(e)} placeholder='test@gmail.com' />
@@ -48,6 +50,7 @@ export default function SignupForm() {
             <div className="text-center">
                 <button type="submit" className='text-white-default bg-primary rounded-[40px] px-[17px] py-[11px]'>Sign Up</button>
             </div>
+            <Link href={"/auth/signin"} ><p className='mt-[27px]  font-normal text-[12px] text-center'>If already have an account<span className='text-primary'>SignIn</span></p></Link>
         </form>
     )
 };
