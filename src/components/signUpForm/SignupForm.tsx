@@ -1,4 +1,6 @@
 "use client"
+import { URL } from '@/constants/SiteUrl'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -21,7 +23,28 @@ export default function SignupForm() {
         e.preventDefault();
         console.log("🚀 ~ SignupForm ~ state:", state)
         setstate(initialState)
-        router.push("/auth/signin")
+
+        // axios({
+        //     method: 'post',
+        //     url: `${URL}/api/user`,
+        //     data: {
+        //       email: state.email,
+        //       username: state.userName,
+        //       password: state.userPassword,
+        //     }
+        //   });
+        axios.post(`${URL}/api/user`, {
+            email: state.email,
+            username: state.userName,
+            password: state.userPassword,
+        })
+            .then(function (response) {
+                console.log(response);
+                router.push("/signin")
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -50,7 +73,7 @@ export default function SignupForm() {
             <div className="text-center">
                 <button type="submit" className='text-white-default bg-primary rounded-[40px] px-[17px] py-[11px]'>Sign Up</button>
             </div>
-            <Link href={"/auth/signin"} ><p className='mt-[27px]  font-normal text-[12px] text-center'>If already have an account<span className='text-primary'>SignIn</span></p></Link>
+            <Link href={"/signin"} ><p className='mt-[27px]  font-normal text-[12px] text-center'>If already have an account<span className='text-primary'>SignIn</span></p></Link>
         </form>
     )
 };
