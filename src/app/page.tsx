@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-// import { getServerSession } from "next-auth";
-// import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title:
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  // const user = await getServerSession()
-  // console.log("🚀 ~ Home ~ user:", user)
-  // if (!user) {
-  //   redirect("/auth/signin")
-  // }
+  const user = await getServerSession()
+  console.log("🚀 ~ Home ~ user:", user)
+  if (!user) {
+    redirect("/signin")
+  }
   
   return (
     <>
