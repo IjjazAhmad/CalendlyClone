@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "^5.11.0",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.3",
@@ -22,6 +22,7 @@
     "react": "^18",
     "react-calendar": "^4.8.0",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.2",
     "react-hot-toast": "^2.4.1",
     "zod": "^3.22.4"
   },

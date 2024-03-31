@@ -6,7 +6,7 @@ import { NextResponse } from "next/server"
 export async function POST(req: Request) {
     try {
         const body = await req.json()
-        const { email, username, password } = userSchema.parse(body)
+        const { email,fullname, username, password } = userSchema.parse(body)
         // chack email already exiest
         const existingUserByEmail =await prisma.user.findUnique({
             where:{email: email}
@@ -24,8 +24,9 @@ export async function POST(req: Request) {
         const hashPassowrd = await hash(password, 10)
         const newUser = await prisma.user.create({
             data: {
-                username,
                 email,
+                fullname,
+                username,
                 password: hashPassowrd
             },
         })
