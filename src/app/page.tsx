@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { authOptions } from "@/constants/authProvider";
 
 export const metadata: Metadata = {
   title:
@@ -10,9 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const user = await getServerSession()
-  console.log("🚀 ~ Home ~ user:", user)
-  if (!user) {
+  const session = await getServerSession(authOptions)
+  if (!session) {
     redirect("/signin")
   }
   

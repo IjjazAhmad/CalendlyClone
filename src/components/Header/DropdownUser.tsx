@@ -72,7 +72,7 @@ const DropdownUser = () => {
         <ul className="flex flex-col  border-b border-stroke px-8 py-7.5 ">
           <li>
             <Link
-              href="/"
+              href="/profile"
               className="flex items-center   py-2 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
             >
               Profile
